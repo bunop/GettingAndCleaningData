@@ -33,18 +33,33 @@ idx <- grep("X_train", file_list$Name)
 train_file <- file_list$Name[idx]
 train_path <- file.path(tempdir(), train_file)
 
+# get the relative y_train path in archive
+idx <- grep("/y_train.txt", file_list$Name)
+train_file_labels <- file_list$Name[idx]
+train_path_labels <- file.path(tempdir(), train_file_labels)
+
 # get the relative X_test path in archive
 idx <- grep("X_test", file_list$Name)
 test_file <- file_list$Name[idx]
 test_path <- file.path(tempdir(), test_file)
+
+# get the relative y_test path in archive
+idx <- grep("/y_test.txt", file_list$Name)
+test_file_labels <- file_list$Name[idx]
+test_path_labels <- file.path(tempdir(), test_file_labels)
 
 # get features list (data headers)
 idx <- grep("features.txt", file_list$Name)
 features_file <- file_list$Name[idx]
 features_path <- file.path(tempdir(), features_file)
 
+# get activity labels
+idx <- grep("activity_labels.txt", file_list$Name)
+activity_labels <- file_list$Name[idx]
+activity_labels_path <- file.path(tempdir(), activity_labels)
+
 # read the training set
-training_set <- read_handy(train_path, features_path)
+training_set <- read_handy(train_path, features_path, train_path_labels, activity_labels_path)
 
 # read the test set
-test_set <- read_handy(test_path, features_path)
+test_set <- read_handy(test_path, features_path, test_path_labels, activity_labels_path)
