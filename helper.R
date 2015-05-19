@@ -58,7 +58,7 @@ Activity <- function(x = data.frame()) {
 }
 
 # Read csv and return a data frame
-read_handy <-function(inputfile, header_file, label_file, activity_file) {
+read_handy <-function(inputfile, header_file, label_file, activity_file, subject_file) {
     # Try to handle memory in efficient way. Probe inputfile
     probe <- read.table(inputfile, nrows=100);
 
@@ -92,6 +92,15 @@ read_handy <-function(inputfile, header_file, label_file, activity_file) {
 
     # Now trasform activity levels in activity names
     data$Activity <- sapply(data$Activity, activity$getLabel)
+
+    # Add subject ids
+    subjects <- read.table(subject_file)
+
+    # label this column
+    colnames(subjects) <- c("Subject")
+
+    # Add this column on the left
+    data <- cbind(subjects, data)
 
     # Explicit return data
     return (data);
