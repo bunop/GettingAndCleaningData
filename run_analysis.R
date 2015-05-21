@@ -73,4 +73,9 @@ rm(test_set)
 # creates a second, independent tidy data
 # set with the average of each variable for each activity and each subject.
 
-#
+# dplyr summarize_each apply one or more functions to one or more columns.
+# Grouping variables are always excluded from modification.
+tidy_dataset <- merged_set %>% group_by(Subject, Activity) %>% summarise_each(funs(mean))
+
+# Write tidy_dataset for submission
+write.table(tidy_dataset, "tidy_dataset.txt", row.name=FALSE)
