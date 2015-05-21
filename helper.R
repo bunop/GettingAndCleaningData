@@ -1,5 +1,6 @@
 
 # An helper file to do some stuff
+require(dplyr)
 
 # Donwload uci har dataset if needed
 downloadDataset <- function(directory=tempdir()) {
@@ -58,49 +59,49 @@ Activity <- function(x = data.frame()) {
 }
 
 # Read csv and return a data frame
-read_handy <-function(inputfile, header_file, label_file, activity_file, subject_file) {
+read_handy <-function(set, features_path, labels_path) {
     # Try to handle memory in efficient way. Probe inputfile
-    probe <- read.table(inputfile, nrows=100);
+    probe <- read.table(set$data, nrows=100);
 
     # probe column classes
     classes <- sapply(probe, class);
 
     # Now load efficiently all data. comment.char is empty cause there are no comments
-    data <- read.table(inputfile, colClasses = classes, comment.char = "");
+    data <- read.table(set$data, colClasses = classes, comment.char = "");
 
     # Non set column names from header_file (eg. features.txt)
-    colNames <- read.table(header_file, colClasses = c("NULL", "character"));
-
-    # Transpose names
-    colNames <- t(colNames);
+    colNames <- read.table(set$columns, colClasses = c("NULL", "character"));
 
     # Set header to table
-    colnames(data) <- colNames;
+    colnames(data) <- make.names(as.vector(colNames[,1]), unique=TRUE);
 
     # Now set row activities label
-    rowNames <- read.table(label_file)
+    activity <- read.table(set$activity)
 
     # label this column
-    colnames(rowNames) <- c("Activity")
+    colnames(activity) <- c("Activity")
 
     # Add this column on the left
-    data <- cbind(rowNames, data)
+    data <- bind_cols(activity, data)
 
     # Get a kind of activity class. This is a function that I declared upper in this file
     activity <- Activity()
-    activity$init(activity_file)
+    activity$init(set$labels)
 
     # Now trasform activity levels in activity names
     data$Activity <- sapply(data$Activity, activity$getLabel)
 
     # Add subject ids
-    subjects <- read.table(subject_file)
+    subjects <- read.table(set$subjects)
 
     # label this column
     colnames(subjects) <- c("Subject")
 
     # Add this column on the left
-    data <- cbind(subjects, data)
+    data <- bind_cols(subjects, data)
+
+    # Now transform data in dplyr table
+    data <- tbl_df(data)
 
     # Explicit return data
     return (data);
