@@ -8,8 +8,7 @@ Subsequently, the body linear acceleration and angular velocity were derived in 
 
 Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
 
-These signals were used to estimate variables of the feature vector for each pattern:  
-'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+These signals were used to estimate variables of the feature vector for each pattern: '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
 
 More information can be found [here](http://archive.ics.uci.edu/ml/machine-learning-databases/00240/UCI%20HAR%20Dataset.names)
 
@@ -27,26 +26,26 @@ N.  | Name  | Value/units
 3 | tBodyAcc.mean...X | average of timed body linear acceleration signal on vector X
 4 | tBodyAcc.mean...Y | average of timed body linear acceleration signal on vector Y
 5 | tBodyAcc.mean...Z | average of timed body linear acceleration signal on vector Z
-6 | tGravityAcc.mean...X | time domain signals
-7 | tGravityAcc.mean...Y | time domain signals
-8 | tGravityAcc.mean...Z | time domain signals
-9 | tBodyAccJerk.mean...X | time domain signals
-10 | tBodyAccJerk.mean...Y | time domain signals
-11 | tBodyAccJerk.mean...Z | time domain signals
-12 | tBodyGyro.mean...X | time domain signals
-13 | tBodyGyro.mean...Y | time domain signals
-14 | tBodyGyro.mean...Z | time domain signals
-15 | tBodyGyroJerk.mean...X | 
-16 | tBodyGyroJerk.mean...Y | 
-17 | tBodyGyroJerk.mean...Z | 
-18 | tBodyAccMag.mean.. | 
-19 | tGravityAccMag.mean.. | 
-20 | tBodyAccJerkMag.mean.. | 
-21 | tBodyGyroMag.mean.. | 
-22 | tBodyGyroJerkMag.mean.. | 
-23 | fBodyAcc.mean...X | 
-24 | fBodyAcc.mean...Y | 
-25 | fBodyAcc.mean...Z | 
+6 | tGravityAcc.mean...X | average of timed gravity acceleration signal on vector X
+7 | tGravityAcc.mean...Y | average of timed gravity acceleration signal on vector Y
+8 | tGravityAcc.mean...Z | average of timed gravity acceleration signal on vector Z
+9 | tBodyAccJerk.mean...X | average of timed body linear acceleration Jerk signal on vector X
+10 | tBodyAccJerk.mean...Y | average of timed body linear acceleration Jerk signal on vector Y
+11 | tBodyAccJerk.mean...Z | average of timed body linear acceleration Jerk signal on vector Z
+12 | tBodyGyro.mean...X | average of timed body gyroscope signal on vector X
+13 | tBodyGyro.mean...Y | average of timed body gyroscope signal on vector Y
+14 | tBodyGyro.mean...Z | average of timed body gyroscope signal on vector Z
+15 | tBodyGyroJerk.mean...X | average of timed body gyroscope Jerk signal on vector X
+16 | tBodyGyroJerk.mean...Y | average of timed body gyroscope Jerk signal on vector Y
+17 | tBodyGyroJerk.mean...Z | average of timed body gyroscope Jerk signal on vector Z
+18 | tBodyAccMag.mean.. | average of timed body acceleration signal magitude
+19 | tGravityAccMag.mean.. | average of timed gravity acceleration signal magitude
+20 | tBodyAccJerkMag.mean.. | average of timed body acceleration Jerk signal magitude
+21 | tBodyGyroMag.mean.. | average of timed body gyroscope signal magitude
+22 | tBodyGyroJerkMag.mean.. | average of timed body gyroscope Jerk signal magitude
+23 | fBodyAcc.mean...X | average of timed body linear acceleration frequency signal on vector X
+24 | fBodyAcc.mean...Y | average of timed body linear acceleration frequency signal on vector Y
+25 | fBodyAcc.mean...Z | average of timed body linear acceleration frequency signal on vector Z
 26 | fBodyAcc.meanFreq...X | 
 27 | fBodyAcc.meanFreq...Y | 
 28 | fBodyAcc.meanFreq...Z | 
