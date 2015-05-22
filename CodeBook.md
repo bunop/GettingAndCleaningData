@@ -12,7 +12,7 @@ These signals were used to estimate variables of the feature vector for each pat
 
 More information can be found [here](http://archive.ics.uci.edu/ml/machine-learning-databases/00240/UCI%20HAR%20Dataset.names)
 
-By sourcing `run_analysis.R` inside R evironment, data are downloaded from [UCI](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones#) dataset in a `.zip` file in a temporary directory. Then files are unpacked and *train* and *test* dataset are reconstructed by loading the `X_train.txt` and `X_test.txt` file; Columns were labeled with `features.txt` file for each of the dataset. Activities are merged to *train* and *test* set dataset by adding `y_train.txt` and `y_test.txt` as a new column. Subject are added in the same way by adding `subject_train.txt`  and `subject_test.txt` as a new column on *train* and *test* dataset respectiveley. Then `activity_labels.txt` was used to replace the *activity id* with its appropriate label. Then *train* and *test* dataset were merged by rows and only the measurements which column name contain *mean* or *std* where extracted. Finally a *tidy dataset* was created with the average of each variable for each activity and each subject. This *tidy dataset* was dumped in the `tidy_dataset.txt` file.
+By sourcing `run_analysis.R` inside R evironment, data are downloaded from [UCI](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones#) dataset in a `.zip` file in a temporary directory. Then files are unpacked and *train* and *test* dataset are reconstructed by loading the `X_train.txt` and `X_test.txt` file; Columns were labeled with `features.txt` file for each of the dataset. Activities are merged to *train* and *test* set dataset by adding `y_train.txt` and `y_test.txt` as a new column. Subject are added in the same way by adding `subject_train.txt`  and `subject_test.txt` as a new column on *train* and *test* dataset respectiveley. Then `activity_labels.txt` was used to replace the *activity id* with its appropriate label. Then *train* and *test* dataset were merged by rows and only the measurements as *mean()* or *std()* where extracted. Finally a *tidy dataset* was created with the average of each variable for each activity and each subject. This *tidy dataset* was dumped in the `tidy_dataset.txt` file.
 
 Code book
 =========
@@ -23,89 +23,69 @@ N.  | Name  | Value/units
 --------- | ----- | -----------
 1 | Subject   | identifies the subject who performed the activity for each window sample. Its range is from 1 to 30. 
 2 | Activity | the performed six activities (WALKING, WALKING\_UPSTAIRS, WALKING\_DOWNSTAIRS, SITTING, STANDING, LAYING) 
-3 | tBodyAcc.mean...X | average of timed body linear acceleration signal on vector X
-4 | tBodyAcc.mean...Y | average of timed body linear acceleration signal on vector Y
-5 | tBodyAcc.mean...Z | average of timed body linear acceleration signal on vector Z
-6 | tGravityAcc.mean...X | average of timed gravity acceleration signal on vector X
-7 | tGravityAcc.mean...Y | average of timed gravity acceleration signal on vector Y
-8 | tGravityAcc.mean...Z | average of timed gravity acceleration signal on vector Z
-9 | tBodyAccJerk.mean...X | average of timed body linear acceleration Jerk signal on vector X
-10 | tBodyAccJerk.mean...Y | average of timed body linear acceleration Jerk signal on vector Y
-11 | tBodyAccJerk.mean...Z | average of timed body linear acceleration Jerk signal on vector Z
-12 | tBodyGyro.mean...X | average of timed body gyroscope signal on vector X
-13 | tBodyGyro.mean...Y | average of timed body gyroscope signal on vector Y
-14 | tBodyGyro.mean...Z | average of timed body gyroscope signal on vector Z
-15 | tBodyGyroJerk.mean...X | average of timed body gyroscope Jerk signal on vector X
-16 | tBodyGyroJerk.mean...Y | average of timed body gyroscope Jerk signal on vector Y
-17 | tBodyGyroJerk.mean...Z | average of timed body gyroscope Jerk signal on vector Z
-18 | tBodyAccMag.mean.. | average of timed body acceleration signal magitude
-19 | tGravityAccMag.mean.. | average of timed gravity acceleration signal magitude
-20 | tBodyAccJerkMag.mean.. | average of timed body acceleration Jerk signal magitude
-21 | tBodyGyroMag.mean.. | average of timed body gyroscope signal magitude
-22 | tBodyGyroJerkMag.mean.. | average of timed body gyroscope Jerk signal magitude
-23 | fBodyAcc.mean...X | average of timed body linear acceleration frequency signal on vector X
-24 | fBodyAcc.mean...Y | average of timed body linear acceleration frequency signal on vector Y
-25 | fBodyAcc.mean...Z | average of timed body linear acceleration frequency signal on vector Z
-26 | fBodyAcc.meanFreq...X | 
-27 | fBodyAcc.meanFreq...Y | 
-28 | fBodyAcc.meanFreq...Z | 
-29 | fBodyAccJerk.mean...X | 
-30 | fBodyAccJerk.mean...Y | 
-31 | fBodyAccJerk.mean...Z | 
-32 | fBodyAccJerk.meanFreq...X | 
-33 | fBodyAccJerk.meanFreq...Y | 
-34 | fBodyAccJerk.meanFreq...Z | 
-35 | fBodyGyro.mean...X | 
-36 | fBodyGyro.mean...Y | 
-37 | fBodyGyro.mean...Z | 
-38 | fBodyGyro.meanFreq...X | 
-39 | fBodyGyro.meanFreq...Y | 
-40 | fBodyGyro.meanFreq...Z | 
-41 | fBodyAccMag.mean.. | 
-42 | fBodyAccMag.meanFreq.. | 
-43 | fBodyBodyAccJerkMag.mean.. | 
-44 | fBodyBodyAccJerkMag.meanFreq.. | 
-45 | fBodyBodyGyroMag.mean.. | 
-46 | fBodyBodyGyroMag.meanFreq.. | 
-47 | fBodyBodyGyroJerkMag.mean.. | 
-48 | fBodyBodyGyroJerkMag.meanFreq.. | 
-49 | angle.tBodyAccMean.gravity. | 
-50 | angle.tBodyAccJerkMean..gravityMean. | 
-51 | angle.tBodyGyroMean.gravityMean. | 
-52 | angle.tBodyGyroJerkMean.gravityMean. | 
-53 | angle.X.gravityMean. | 
-54 | angle.Y.gravityMean. | 
-55 | angle.Z.gravityMean. | 
-56 | tBodyAcc.std...X | 
-57 | tBodyAcc.std...Y | 
-58 | tBodyAcc.std...Z | 
-59 | tGravityAcc.std...X | 
-60 | tGravityAcc.std...Y | 
-61 | tGravityAcc.std...Z | 
-62 | tBodyAccJerk.std...X | 
-63 | tBodyAccJerk.std...Y | 
-64 | tBodyAccJerk.std...Z | 
-65 | tBodyGyro.std...X | 
-66 | tBodyGyro.std...Y | 
-67 | tBodyGyro.std...Z | 
-68 | tBodyGyroJerk.std...X | 
-69 | tBodyGyroJerk.std...Y | 
-70 | tBodyGyroJerk.std...Z | 
-71 | tBodyAccMag.std.. | 
-72 | tGravityAccMag.std.. | 
-73 | tBodyAccJerkMag.std.. | 
-74 | tBodyGyroMag.std.. | 
-75 | tBodyGyroJerkMag.std.. | 
-76 | fBodyAcc.std...X | 
-77 | fBodyAcc.std...Y | 
-78 | fBodyAcc.std...Z | 
-79 | fBodyAccJerk.std...X | 
-80 | fBodyAccJerk.std...Y | 
-81 | fBodyAccJerk.std...Z | 
-82 | fBodyGyro.std...X | 
-83 | fBodyGyro.std...Y | 
-84 | fBodyGyro.std...Z | 
-85 | fBodyAccMag.std.. | 
-86 | fBodyBodyAccJerkMag.std.. | 
-87 | fBodyBodyGyroMag.std.. | 
-88 | fBodyBodyGyroJerkMag.std.. | 
+3 | tBodyAcc.mean.X | average of timed body linear acceleration signal on vector X
+4 | tBodyAcc.mean.Y | average of timed body linear acceleration signal on vector Y
+5 | tBodyAcc.mean.Z | average of timed body linear acceleration signal on vector Z
+6 | tGravityAcc.mean.X | average of timed gravity acceleration signal on vector X
+7 | tGravityAcc.mean.Y | average of timed gravity acceleration signal on vector Y
+8 | tGravityAcc.mean.Z | average of timed gravity acceleration signal on vector Z
+9 | tBodyAccJerk.mean.X | average of timed body linear acceleration Jerk signal on vector X
+10 | tBodyAccJerk.mean.Y | average of timed body linear acceleration Jerk signal on vector Y
+11 | tBodyAccJerk.mean.Z | average of timed body linear acceleration Jerk signal on vector Z
+12 | tBodyGyro.mean.X | average of timed body gyroscope signal on vector X
+13 | tBodyGyro.mean.Y | average of timed body gyroscope signal on vector Y
+14 | tBodyGyro.mean.Z | average of timed body gyroscope signal on vector Z
+15 | tBodyGyroJerk.mean.X | average of timed body gyroscope Jerk signal on vector X
+16 | tBodyGyroJerk.mean.Y | average of timed body gyroscope Jerk signal on vector Y
+17 | tBodyGyroJerk.mean.Z | average of timed body gyroscope Jerk signal on vector Z
+18 | tBodyAccMag.mean | average of timed body acceleration signal magnitude
+19 | tGravityAccMag.mean | average of timed gravity acceleration signal magnitude
+20 | tBodyAccJerkMag.mean | average of timed body acceleration Jerk signal magitude
+21 | tBodyGyroMag.mean | average of timed body gyroscope signal magitude
+22 | tBodyGyroJerkMag.mean | average of timed body gyroscope Jerk signal magnitude
+23 | fBodyAcc.mean.X | average of body linear acceleration frequency signal on vector X
+24 | fBodyAcc.mean.Y | average of body linear acceleration frequency signal on vector Y
+25 | fBodyAcc.mean.Z | average of body linear acceleration frequency signal on vector Z
+26 | fBodyAccJerk.mean.X | average of body linear acceleration frequency Jerk signal on vector X
+27 | fBodyAccJerk.mean.Y | average of body linear acceleration frequency Jerk signal on vector Y
+28 | fBodyAccJerk.mean.Z | average of body linear acceleration frequency Jerk signal on vector Z
+29 | fBodyGyro.mean.X | average of body gyroscope frequency signal on vector X
+30 | fBodyGyro.mean.Y | average of body gyroscope frequency signal on vector Y
+31 | fBodyGyro.mean.Z | average of body gyroscope frequency signal on vector Z
+32 | fBodyAccMag.mean | average of body acceleration frequency signal magitude
+33 | fBodyAccJerkMag.mean | average of body acceleration frequency Jerk signal magnitude
+34 | fBodyGyroMag.mean | average of body gyroscope frequecy signal magitude
+35 | fBodyGyroJerkMag.mean | average of body gyroscope frequency Jerk signal magnitude
+36 | tBodyAcc.std.X | standard deviation of timed body linear acceleration signal on vector X
+37 | tBodyAcc.std.Y | standard deviation of timed body linear acceleration signal on vector Y
+38 | tBodyAcc.std.Z | standard deviation of timed body linear acceleration signal on vector Z
+39 | tGravityAcc.std.X | standard deviation of timed gravity acceleration signal on vector X
+40 | tGravityAcc.std.Y | standard deviation of timed gravity acceleration signal on vector Y
+41 | tGravityAcc.std.Z | standard deviation of timed gravity acceleration signal on vector Z
+42 | tBodyAccJerk.std.X | standard deviation of timed body linear acceleration Jerk signal on vector X
+43 | tBodyAccJerk.std.Y | standard deviation of timed body linear acceleration Jerk signal on vector Y
+44 | tBodyAccJerk.std.Z | standard deviation of timed body linear acceleration Jerk signal on vector Z
+45 | tBodyGyro.std.X | standard deviation of timed body gyroscope signal on vector X
+46 | tBodyGyro.std.Y | standard deviation of timed body gyroscope signal on vector Y
+47 | tBodyGyro.std.Z | standard deviation of timed body gyroscope signal on vector Z
+48 | tBodyGyroJerk.std.X | standard deviation of timed body gyroscope Jerk signal on vector X
+49 | tBodyGyroJerk.std.Y | standard deviation of timed body gyroscope Jerk signal on vector Y
+50 | tBodyGyroJerk.std.Z | standard deviation of timed body gyroscope Jerk signal on vector Z
+51 | tBodyAccMag.std | standard deviation of timed body acceleration signal magnitude
+52 | tGravityAccMag.std | standard deviation of timed gravity acceleration signal magnitude
+53 | tBodyAccJerkMag.std | standard deviation of timed body acceleration Jerk signal magitude
+54 | tBodyGyroMag.std | standard deviaton of timed body gyroscope signal magitude
+55 | tBodyGyroJerkMag.std | standard deviation of timed body gyroscope Jerk signal magnitude
+56 | fBodyAcc.std.X | standard deviation of body linear acceleration frequency signal on vector X
+57 | fBodyAcc.std.Y | standard deviation of body linear acceleration frequency signal on vector Y
+58 | fBodyAcc.std.Z | standard deviation of body linear acceleration frequency signal on vector Z
+59 | fBodyAccJerk.std.X | standard deviation of body linear acceleration frequency Jerk signal on vector X
+60 | fBodyAccJerk.std.Y | standard deviation of body linear acceleration frequency Jerk signal on vector Y
+61 | fBodyAccJerk.std.Z | standard deviation of body linear acceleration frequency Jerk signal on vector Z
+62 | fBodyGyro.std.X | standard deviation of body gyroscope frequency signal on vector X
+63 | fBodyGyro.std.Y | standard deviation of body gyroscope frequency signal on vector Y
+64 | fBodyGyro.std.Z | standard deviation of body gyroscope frequency signal on vector Z
+65 | fBodyAccMag.std | standard deviation of body acceleration frequency signal magitude
+66 | fBodyAccJerkMag.std | standard deviation of body acceleration frequency Jerk signal magnitude
+67 | fBodyGyroMag.std | standard deviation of body gyroscope frequecy signal magitude
+68 | fBodyGyroJerkMag.std | standard deviation of body gyroscope frequency Jerk signal magnitude
