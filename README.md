@@ -36,5 +36,5 @@ You don't need to download HAR dataset, the script will download it for you and 
 source("run_analysis.R")
 ```
 
-Then te script will download the HAR dataset in a temporary dataset, it will unpack the archive file, it will read file and it will do all the necessary operations to get a `tidy_dataset` data frame and a `tidy_dataset.txt` text file. The `tidy_dataset.txt` is the same uploaded in Coursera Project.
+Then the script will download the HAR dataset in a temporary dataset, it will unpack the archive file, it will read file and it will do all the necessary operations to get a `tidy_dataset` data frame and a `tidy_dataset.txt` text file. The `tidy_dataset.txt` is the same uploaded in Coursera Project.
 
