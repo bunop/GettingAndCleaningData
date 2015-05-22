@@ -2,7 +2,7 @@
 Getting and Cleaning Data Course Project
 ========================================
 
-This repository is my Solution to Coursera Getting And Cleaning data Course project. The goal is to prepare tidy data set from the [HAR data set](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones). This repository contains this `README.md` file, a `run_analysis.R` script which download the HAR dataset and peforms all the operation to create the tidy dataset, a `helper.r` in which there are some functions needed by `run_analysis.R` in order to work correctly and the `CodeBook.mk` that describes the variables, the data, and any transformations or work that you performed to clean up the data.
+This repository is my Solution to Coursera Getting And Cleaning data Course project. The goal is to prepare tidy data set from the [HAR data set](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones). This repository contains this `README.md` file, `run_analysis.R` script which download the HAR dataset and peforms all the operation to create the tidy dataset, a `helper.r` in which there are some functions needed by `run_analysis.R` in order to work correctly and the `CodeBook.md` that describes the variables, the data, and any transformations or work that you performed to clean up the data. The `tidy_dataset.txt` file is the same upload in Coursera assignment.
 
 ## Motivation (from the Coursera Course Project)
 
@@ -30,4 +30,11 @@ This code relies on R `dplyr` package, so please install it in order to execute 
 $ git clone https://github.com/bunop/GettingAndCleaningData.git
 ```
 
-You don't need to download HAR dataset, the script will download it for you and will do all the operations on data to get a tidy dataset. In your R session change the current working directory into the directory in which you clone this project with `setwd()`. Simply by sourcing `run_analysis.R`, you will download the HAR dataset in a temporary dataset, you will unpack the archive file, reads file and do all the necessary operations to get a `tidy_dataset` data frame and a `tidy_dataset.txt` text file
+You don't need to download HAR dataset, the script will download it for you and will do all the operations on data to get a tidy dataset. In your R session change the current working directory into the directory in which you clone this project with `setwd()`. Simply you have to source `run_analysis.R` with:
+
+```R
+source("run_analysis.R")
+```
+
+Then te script will download the HAR dataset in a temporary dataset, it will unpack the archive file, it will read file and it will do all the necessary operations to get a `tidy_dataset` data frame and a `tidy_dataset.txt` text file. The `tidy_dataset.txt` is the same uploaded in Coursera Project.
+
