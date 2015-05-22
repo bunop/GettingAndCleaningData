@@ -57,7 +57,7 @@ training_set <- read_handy(train)
 # Select only useful columns
 training_set <- select(training_set, Subject, Activity, contains("mean"), contains("std"))
 
-# read the test set
+# read the test set (function defined in helper.R)
 test_set <- read_handy(test)
 
 # Select only useful columns
