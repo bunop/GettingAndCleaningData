@@ -73,7 +73,7 @@ read_handy <-function(set, features_path, labels_path) {
     colNames <- read.table(set$columns, colClasses = c("NULL", "character"));
 
     # Set header to table
-    colnames(data) <- make.names(as.vector(colNames[,1]), unique=TRUE);
+    colnames(data) <- make.names(sub(pattern = "\\(\\)", replacement = "", x=as.vector(colNames[,1]), perl = T), unique=TRUE);
 
     # Now set row activities label
     activity <- read.table(set$activity)

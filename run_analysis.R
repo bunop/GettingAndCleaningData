@@ -55,13 +55,13 @@ test$labels <- activity_labels_path
 training_set <- read_handy(train)
 
 # Select only useful columns
-training_set <- select(training_set, Subject, Activity, contains("mean"), contains("std"))
+training_set <- select(training_set, Subject, Activity, contains("mean"), contains("std"), -contains("meanFreq"), -contains("gravityMean"), -starts_with("Angle"))
 
 # read the test set (function defined in helper.R)
 test_set <- read_handy(test)
 
 # Select only useful columns
-test_set <- select(test_set, Subject, Activity, contains("mean"), contains("std"))
+test_set <- select(test_set, Subject, Activity, contains("mean"), contains("std"), -contains("meanFreq"), -contains("gravityMean"), -starts_with("Angle"))
 
 # Put the two test together (since names are the same)
 merged_set <- bind_rows(training_set, test_set)
